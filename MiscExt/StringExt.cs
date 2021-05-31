@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace System
+namespace System.Text
 {
     public static class StringExt
     {
@@ -38,11 +38,6 @@ namespace System
             }
             return ret;
 
-        }
-
-        public static void AppendLine(this StringBuilder sb, string format, params object[] args)
-        {
-            sb.AppendLine(string.Format(format, args));
         }
 
         public static string[] Split(this string text, string seperator)
