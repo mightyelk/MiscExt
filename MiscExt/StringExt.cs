@@ -109,10 +109,18 @@ namespace System.Text
             return s.Substring(0, s.Length - cutOffCount);
         }
 
-        public static string ReplaceAll(this string s, string[] replace, string with)
+
+        /// <summary>
+        /// Replaces all occurences of replace[] with replaceWith
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="replace">array of strings to look for</param>
+        /// <param name="replaceWith">replace string</param>
+        /// <returns></returns>
+        public static string ReplaceAll(this string s, string[] replace, string replaceWith)
         {
             foreach (string x in replace)
-                s = s.Replace(x, with);
+                s = s.Replace(x, replaceWith);
 
             return s;
         }
