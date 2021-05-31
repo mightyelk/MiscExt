@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MiscExt
+namespace MightyElk.MiscExt
 {
     public static class NumericExt
     {

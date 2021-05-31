@@ -7,7 +7,7 @@
     <ProjectGuid>{895FD1B0-BBC3-43F9-8E20-CA42F1D83B63}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MightyElk</RootNamespace>
+    <RootNamespace>MightyElk.MiscExt</RootNamespace>
     <AssemblyName>MiscExt</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,10 +40,13 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateExt.cs" />
+    <Compile Include="DrawingExt.cs" />
+    <Compile Include="ICollectionExt.cs" />
     <Compile Include="RegHelper.cs" />
     <Compile Include="SqlClientExt.cs" />
     <Compile Include="IOExt.cs" />
@@ -51,6 +54,7 @@
     <Compile Include="OtherExt.cs" />
     <Compile Include="StringExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeSpanExt.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

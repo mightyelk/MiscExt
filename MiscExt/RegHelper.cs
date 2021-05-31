@@ -5,7 +5,7 @@ using System.Security.Principal;
 using System.Text;
 using Microsoft.Win32;
 
-namespace MiscExt
+namespace MightyElk.MiscExt
 {
     public class RegHelper
     {
