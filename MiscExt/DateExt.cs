@@ -25,5 +25,44 @@ namespace MightyElk.MiscExt
         }
 
 
+        /// <summary>
+        /// Checks wether the time part of a datetime is in a period defined by two timespans.
+        /// </summary>
+        /// <param name=""></param>
+        /// <param name="timeFrom"></param>
+        /// <param name="timeTo"></param>
+        /// <returns></returns>
+        public static bool IsTimeBetween(this DateTime dt, TimeSpan timeFrom, TimeSpan timeTo)
+        {
+            long fromTicks = timeFrom.Ticks;
+            long toTicks = timeTo.Ticks;
+            long checkTicks = dt.TimeOfDay.Ticks;
+
+
+            //is the span going over midnight?
+            bool overflow = timeFrom > timeTo;
+
+            if (overflow)
+                fromTicks -= TimeSpan.FromDays(1).Ticks;
+
+            
+
+
+
+            //too late
+            if (checkTicks > toTicks)
+                return false;
+
+            //too soon
+            if (checkTicks < fromTicks)
+                return false;
+
+
+            return true;
+
+
+
+        }
+
     }
 }
