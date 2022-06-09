@@ -22,6 +22,15 @@ namespace MightyElk.MiscExt.Tests
 
         }
 
+        [TestMethod]
+        public void RemoveAnyTest()
+        {
+            var s = "abc1d2e2f11g2h22";
+            Assert.AreEqual("abcdefgh", s.RemoveAny('1', '2'));
+            Assert.AreEqual("abcdefgh", s.RemoveAny("1", "2"));
+            Assert.AreEqual("abcdefgh", s.RemoveAny(new char[] { '1', '2'}));
+            Assert.AreEqual("abcdefgh", s.RemoveAny(new string[] { "1", "2" }));
+        }
 
         [TestMethod()]
         public void SplitTest()

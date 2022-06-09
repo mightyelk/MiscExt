@@ -50,5 +50,7 @@ namespace MightyElk.MiscExt.Tests
 
             Assert.AreEqual("C:\\windows\\test.exe", newFi.FullName);
         }
+
+    
     }
 }

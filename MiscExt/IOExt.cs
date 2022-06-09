@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace System.IO
 {
+
     public static class IOExt
     {
         /// <summary>
@@ -58,8 +60,6 @@ namespace System.IO
         {
             return fi.NameWithoutExtension() + "." + newExtension;
         }
-
-
 
         /// <summary>
         /// Returns true if read/write access is possible
@@ -159,6 +159,33 @@ namespace System.IO
             {
                 return reader.ReadToEnd();
             }
+        }
+
+
+
+
+        [DllImport("mpr.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern int WNetGetConnection([MarshalAs(UnmanagedType.LPTStr)] string localName, [MarshalAs(UnmanagedType.LPTStr)] StringBuilder remoteName, ref int length);
+        public static string UncFullName(this FileInfo fi)
+        {
+            var sb = new StringBuilder(512);
+            var size = sb.Capacity;
+
+            var driveLetter = fi.Directory.Root.Name.RemoveAny('\\');
+
+            var error = WNetGetConnection(driveLetter, sb, ref size);
+            if (error != 0)
+                throw new Exception( "WNetGetConnection failed");
+
+            var networkpath = sb.ToString();
+            var filepath = fi.FullName.Substring(driveLetter.Length);
+
+            if (networkpath.EndsWith("\\"))
+                networkpath.TrimEnd('\\');
+            if (!filepath.StartsWith("\\"))
+                filepath += "\\";
+
+            return networkpath + filepath;
         }
 
     }

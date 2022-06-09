@@ -44,7 +44,7 @@ namespace System.Text
         {
             return text.Split(new string[] { seperator }, StringSplitOptions.RemoveEmptyEntries);
         }
-        public static string RemoveAny(this string str, char[] oldChar)
+        public static string RemoveAny(this string str, params char[] oldChar)
         {
             foreach (char c in oldChar)
             {
@@ -53,7 +53,7 @@ namespace System.Text
             return str;
         }
 
-        public static string RemoveAny(this string str, string[] oldStr)
+        public static string RemoveAny(this string str, params string[] oldStr)
         {
             foreach (var s in oldStr)
             {
@@ -160,6 +160,29 @@ namespace System.Text
             writer.Flush();
             stream.Position = 0;
             return stream;
+        }
+
+
+        public static bool EndsWithAny(this string s, string[] search, bool ignoreCase)
+        {
+            for (int i = 0; i < search.Length; i++)
+            {
+                if (ignoreCase & s.ToLower().EndsWith(search[i].ToLower())
+                    | !ignoreCase & s.EndsWith(search[i]))
+                    return true;
+            }
+            return false;
+        }
+
+        public static bool StartsWithAny(this string s, string[] search, bool ignoreCase)
+        {
+            for (int i = 0; i < search.Length; i++)
+            {
+                if (ignoreCase & s.ToLower().StartsWith(search[i].ToLower())
+                    | !ignoreCase & s.StartsWith(search[i]))
+                    return true;
+            }
+            return false;
         }
 
     }
