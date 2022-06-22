@@ -119,6 +119,9 @@ namespace System.Text
         /// <returns></returns>
         public static string ReplaceAll(this string s, string[] replace, string replaceWith)
         {
+            if (s is null)
+                return null;
+
             foreach (string x in replace)
                 s = s.Replace(x, replaceWith);
 
