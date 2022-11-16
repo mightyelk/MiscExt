@@ -129,6 +129,24 @@ namespace System.Text
         }
 
         /// <summary>
+        /// Replaces all occurences of replace[] with replaceWith
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="replace">array of chars to look for</param>
+        /// <param name="replaceWith">replace char</param>
+        /// <returns></returns>
+        public static string ReplaceAll(this string s, char[] replace, char replaceWith)
+        {
+            if (s is null)
+                return null;
+
+            foreach (char x in replace)
+                s = s.Replace(x, replaceWith);
+
+            return s;
+        }
+
+        /// <summary>
         /// Returns if any entry of search is in string.
         /// </summary>
         /// <param name="s"></param>
@@ -155,6 +173,12 @@ namespace System.Text
             return false;
         }
 
+
+        /// <summary>
+        /// Copies a string into a memorystream
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public static System.IO.MemoryStream AsMemoryStream(this string s)
         {
             var stream = new System.IO.MemoryStream();
@@ -186,6 +210,26 @@ namespace System.Text
                     return true;
             }
             return false;
+        }
+
+
+        /// <summary>
+        /// Counts the occurance of a string in another string
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="find">search for this</param>
+        /// <returns></returns>
+        public static int Occurance(this string s, string find)
+        {
+            var count = 0;
+            while (s.Contains(find))
+            {
+                var i = s.IndexOf(find);
+                i += find.Length;
+                s = s.Substring(i);
+                count++;
+            }
+            return count;
         }
 
     }
