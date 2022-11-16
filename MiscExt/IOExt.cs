@@ -15,8 +15,10 @@ namespace System.IO
         /// </summary>
         /// <param name="fi"></param>
         /// <returns></returns>
+        [Obsolete("use Path.GetFileNameWithoutExtension instead")]
         public static string NameWithoutExtension(this FileInfo fi)
         {
+            
             string n = fi.Name;
             if (string.IsNullOrEmpty(fi.Extension))
                 return fi.Name;
@@ -56,6 +58,7 @@ namespace System.IO
         /// <param name="fi"></param>
         /// <param name="newExtension">New extension without the dot</param>
         /// <returns></returns>
+        [Obsolete("use Path.ChangeExtension instead")]
         public static string ChangeExtension(this FileInfo fi, string newExtension)
         {
             return fi.NameWithoutExtension() + "." + newExtension;
