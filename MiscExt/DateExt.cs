@@ -44,11 +44,7 @@ namespace MightyElk.MiscExt
 
             if (overflow)
                 fromTicks -= TimeSpan.FromDays(1).Ticks;
-
             
-
-
-
             //too late
             if (checkTicks > toTicks)
                 return false;
@@ -59,10 +55,6 @@ namespace MightyElk.MiscExt
 
 
             return true;
-
-
-
         }
-
     }
 }
